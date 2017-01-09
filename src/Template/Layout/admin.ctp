@@ -13,7 +13,7 @@ $contentLanguage = $this->fetch('contentLanguage');
         </title>
         <?php echo $this->Html->meta('icon') ?>
 
-        <?php echo $this->Html->css('style.css', array('media' => 'screen')) ?>
+        <?php echo $this->Html->css('style-dark.css', array('media' => 'screen')) ?>
 
         <?php echo $this->fetch('meta') ?>
         <?php echo $this->fetch('css') ?>

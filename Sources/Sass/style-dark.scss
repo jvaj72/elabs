@@ -3,8 +3,8 @@
 // -----------------------------------------
 
 // Variables, can't be variations of the bootstrap variables as loaded first
-@import "core/variables.scss";
-$navbar-default-bg: #F642BB;
+@import "core/variables_style-dark.scss";
+
 
 // Base from Bootstrap
 @import "custom_bootstrap.scss";
