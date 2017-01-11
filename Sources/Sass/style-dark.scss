@@ -23,15 +23,15 @@
 // Reset and dependencies
 
 // Core CSS
-@import "core/scaffolding";
+@import "core/scaffolding_style-dark";
 @import "core/forms";
-@import "core/type.scss";
+@import "core/type_style-dark.scss";
 
 // Components
 @import "components/events";
 @import "components/breadcrumbs";
 @import "components/labels";
-@import "components/navbar";
+@import "components/navbar_style-dark";
 @import "components/pagination";
 @import "components/alerts";
 @import "components/list-group";
