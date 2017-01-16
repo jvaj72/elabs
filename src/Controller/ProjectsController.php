@@ -26,9 +26,7 @@ class ProjectsController extends AppController
      */
     public function index($filter = null, $id = null)
     {
-        $this->paginate = [
-            'order' => ['created' => 'desc']
-        ];
+        $this->paginate['sortWhitelist'] = ['name', 'created', 'modified'];
         $query = $this->Projects->find('withContain', ['sfw' => !$this->seeNSFW]);
 
         // Other conditions:
@@ -54,7 +52,7 @@ class ProjectsController extends AppController
             // Get additionnal infos infos
             $modelName = Inflector::camelize(Inflector::pluralize($filter));
             $FilterModel = TableRegistry::get($modelName);
-            $filterData = $FilterModel->getWithoutContain($id);
+            $filterData = $FilterModel->getWithContain($id);
 
             $this->set('filterData', $filterData);
         }
@@ -72,7 +70,13 @@ class ProjectsController extends AppController
      */
     public function view($id = null)
     {
-        $project = $this->Projects->getWithContain($id, ['sfw' => !$this->seeNSFW]);
+        $project = $this->Projects->getWithContain($id, [
+            'sfw' => !$this->seeNSFW,
+            'withAlbums' => true,
+            'withFiles' => true,
+            'withNotes' => true,
+            'withPosts' => true,
+            ]);
 
         //SFW state
         if (!$project->sfw && !$this->seeNSFW) {
